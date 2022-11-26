@@ -5,18 +5,20 @@ import ProductList from "./ProductList";
 import { Container,Row,Col} from "react-bootstrap";
 
 function App() {
+  let productInfo = {title:"Ürünler"}
+  let categoryInfo = {title:"Kategoriler"}
   return (
-    <div>
+    <div> 
       <Container>
         <Row>
           <Navi/>
         </Row>
         <Row>
           <Col xs="3">
-            <CategoryList title="Kategoriler1"/>
+            <CategoryList info={categoryInfo}/>
           </Col>
           <Col xs="9">
-            <ProductList title="Ürünler1"/>
+            <ProductList info={productInfo}/>
           </Col>
          
         </Row>

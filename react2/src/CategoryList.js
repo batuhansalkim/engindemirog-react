@@ -3,20 +3,24 @@ import { ListGroup,ListGroupItem } from 'react-bootstrap'
 
 
 export default class CategoryList extends Component {
-    constructor(props){
-        super(props);
-        
-    }
+      
+    state = { categories: [
+      { categoryId: 1, categoryName: "Pantalon" }, 
+      { categoryId: 2, categoryName: "Gömlek" }, 
+      { categoryId: 3, categoryName: "UzunKolu" }
+    ]
+  };
+    
   render() {
     return (
       <div>
-        <h3>{this.props.title}</h3>
+        <h3>{this.props.info.title}</h3>
         <ListGroup>
-            <ListGroupItem>Batuhan</ListGroupItem>
-            <ListGroupItem>Tuna</ListGroupItem>
-            <ListGroupItem>Cenk</ListGroupItem>
-            <ListGroupItem>Alper</ListGroupItem>
-            <ListGroupItem>Murat</ListGroupItem>
+          {
+            this.state.categories.map(category => (
+              <ListGroupItem key={category.categoryId}>{category.categoryName}</ListGroupItem>
+            ))
+          }
         </ListGroup>
       </div>
     )
