@@ -5,16 +5,13 @@ import { ListGroup,ListGroupItem } from 'react-bootstrap'
 export default class CategoryList extends Component {
       
     state = { categories: [
-      { categoryId: 1, categoryName: "Pantalon" }, 
+      { categoryId: 1, categoryName: "Ayakkabı" }, 
       { categoryId: 2, categoryName: "Gömlek" }, 
       { categoryId: 3, categoryName: "UzunKolu" }
-    ],
-    currentCategory:""
+    ]
   };
   
-  changeCategory=(category)=>{
-    this.setState({ currentCategory: category.categoryName })
-  }
+  
 
   render() {
     return (
@@ -23,7 +20,7 @@ export default class CategoryList extends Component {
         <ListGroup>
           {
             this.state.categories.map(category => (
-              <ListGroupItem onClick={()=>this.changeCategory(category)} key={category.categoryId}>{category.categoryName}</ListGroupItem>
+              <ListGroupItem onClick={()=>this.props.changeCategory(category)} key={category.categoryId}>{category.categoryName}</ListGroupItem>
             ))
           }
         </ListGroup>
