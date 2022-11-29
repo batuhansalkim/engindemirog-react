@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Table } from 'react-bootstrap';
 
+
 export default class ProductList extends Component {
   constructor(props) {
     super(props);
@@ -13,9 +14,10 @@ export default class ProductList extends Component {
           <thead>
             <tr>
               <th>#</th>
-              <th>First Name</th>
-              <th>Last Name</th>
-              <th>Username</th>
+              <th>Product Name</th>
+              <th>Unit Price</th>
+              <th>Quantity Per Unit</th>
+               <th>Units In Stock</th>
             </tr>
           </thead>
           <tbody>
@@ -23,11 +25,11 @@ export default class ProductList extends Component {
               <tr key={product.id}>
                 <th scope='row'>{product.id}</th>
                 <td>{product.productName}</td>
-                <td>Otto</td>
-                <td>@mdo</td>
+                <td>{product.unitPrice}</td>
+                <td>{product.quantityPerUnit}</td>
+                <td>{product.unitsInStock}</td>
               </tr>
             ))}
-            
           </tbody>
         </Table>
       </div>
