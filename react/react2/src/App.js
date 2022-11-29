@@ -6,12 +6,21 @@ import { Container,Row,Col} from "react-bootstrap";
 
 export default class App extends Component{
   
-  state = {currentCategory:""}
+  state = {currentCategory:"",products:[]};
 
+  componentDidMount(){
+    this.getProducts();
+  }
 
-  changeCategory = (category) => {
+  changeCategory = category => {
     this.setState({ currentCategory: category.categoryName })
   }
+
+  getProducts = ()=>{
+    fetch("http://localhost:3000/products").then(response=>response.json).then(data=>this.setState({products:data}));
+  }
+
+
   render(){
     let productInfo = { title: "Ürünler" }
     let categoryInfo = { title: "Kategoriler" }
@@ -26,7 +35,9 @@ export default class App extends Component{
               <CategoryList currentCategory = {this.state.currentCategory} changeCategory={this.changeCategory} info={categoryInfo} />
             </Col>
             <Col xs="9">
-              <ProductList currentCategory={this.state.currentCategory} info={productInfo} />
+              <ProductList
+              products={this.state.products}
+               currentCategory={this.state.currentCategory} info={productInfo} />
             </Col>
 
           </Row>
