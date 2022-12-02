@@ -26,7 +26,15 @@ export default class App extends Component{
   }
 
   addToCart=(product)=>{
-    alert(product.productName);
+    let newCart = this.state.cart;
+    var addedItem = newCart.find(c=>c.product.id === product.id);
+    if(addedItem){
+      addedItem.quantity+=1;
+    }else{
+      newCart.push({ product: product, quantity: 1 });
+
+    }
+    this.setState({cart:newCart});
   }
 
 
@@ -37,7 +45,7 @@ export default class App extends Component{
       <div>
         <Container>
           
-            <Navi  />
+            <Navi cart={this.state.cart} />
           
           <Row>
             <Col xs="3">
@@ -46,6 +54,7 @@ export default class App extends Component{
             <Col xs="9">
               <ProductList
               products={this.state.products}
+              addToCart = {this.addToCart}
               currentCategory={this.state.currentCategory} info={productInfo} />
             </Col>
 
