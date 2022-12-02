@@ -6,7 +6,7 @@ import { Container,Row,Col} from "react-bootstrap";
 
 export default class App extends Component{
   
-  state = {currentCategory:"",products:[]};
+  state = {currentCategory:"",products:[],cart:[]};
 
   componentDidMount(){
     this.getProducts();
@@ -25,6 +25,10 @@ export default class App extends Component{
     fetch(url).then(response=>response.json()).then(data=>this.setState({products:data}));
   }
 
+  addToCart=(product)=>{
+    alert(product.productName);
+  }
+
 
   render(){
     let productInfo = { title: "Ürünler" }
@@ -32,9 +36,9 @@ export default class App extends Component{
     return (
       <div>
         <Container>
-          <Row>
-            <Navi />
-          </Row>
+          
+            <Navi  />
+          
           <Row>
             <Col xs="3">
               <CategoryList currentCategory = {this.state.currentCategory} changeCategory={this.changeCategory} info={categoryInfo} />

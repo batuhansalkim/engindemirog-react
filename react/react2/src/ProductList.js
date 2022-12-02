@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
-import { Table } from 'react-bootstrap';
+import { Table,Button } from 'react-bootstrap';
 
 
 export default class ProductList extends Component {
+  
   constructor(props) {
     super(props);
   }
@@ -17,9 +18,11 @@ export default class ProductList extends Component {
               <th>Product Name</th>
               <th>Unit Price</th>
               <th>Quantity Per Unit</th>
-               <th>Units In Stock</th>
+              <th>Units In Stock</th>
+              <th></th>
             </tr>
           </thead>
+
           <tbody>
             {this.props.products.map(product => (
               <tr key={product.id}>
@@ -28,6 +31,7 @@ export default class ProductList extends Component {
                 <td>{product.unitPrice}</td>
                 <td>{product.quantityPerUnit}</td>
                 <td>{product.unitsInStock}</td>
+                <td><Button onClick={()=>this.addToCart(product)} color="info">Ekle</Button></td>
               </tr>
             ))}
           </tbody>
