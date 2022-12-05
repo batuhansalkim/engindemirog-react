@@ -9,13 +9,9 @@ import {
 } from 'reactstrap';
 
 export default class CartSummary extends Component {
-  render() {
-    renderSumary(){
-        
-    }
-    return (
-      <div>
-            <UncontrolledDropdown nav inNavbar>
+  renderSumary(){
+    return(
+        <UncontrolledDropdown nav inNavbar>
                 <DropdownToggle nav caret>
                     Sepetiniz - {this.props.cart.length}
                 </DropdownToggle>
@@ -32,7 +28,10 @@ export default class CartSummary extends Component {
                     </DropdownItem>
                 </DropdownMenu> 
             </UncontrolledDropdown>
-      </div>
-    )
+    );
+    }
+    render() {
+    
+    return <div>{this.props.cart.length>0?this.renderSumary():<div></div>}</div>
   }
 }
