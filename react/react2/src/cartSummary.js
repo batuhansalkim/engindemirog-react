@@ -6,6 +6,8 @@ import {
     DropdownItem,
     NavbarText,
     Badge,
+    NavItem,
+    NavLink, 
 } from 'reactstrap';
 
 export default class CartSummary extends Component {
@@ -30,8 +32,16 @@ export default class CartSummary extends Component {
             </UncontrolledDropdown>
     );
     }
+    renderEmptyCart(){
+        return(
+            <NavItem>
+            <NavLink>Sepet Boş</NavLink>
+        </NavItem>
+        )
+        
+    }
     render() {
     
-    return <div>{this.props.cart.length>0?this.renderSumary():<div></div>}</div>
+    return <div>{this.props.cart.length>0?this.renderSumary():this.renderEmptyCart()}</div>
   }
 }
