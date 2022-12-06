@@ -57,7 +57,10 @@ export default class App extends Component{
             <Col xs="3">
               <CategoryList currentCategory = {this.state.currentCategory} changeCategory={this.changeCategory} info={categoryInfo} />
             </Col>
+
             <Col xs="9">
+              <switch></switch>
+
               <ProductList
               products={this.state.products}
               addToCart = {this.addToCart}
