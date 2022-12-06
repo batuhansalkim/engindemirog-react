@@ -36,7 +36,7 @@ export default class App extends Component{
 
     }
     this.setState({cart:newCart});
-    alertify.success(product.productName + "added to cart!",1);
+    alertify.success(product.productName + "added to cart!");
   }
 
   removeFromCart=(product)=>{
@@ -57,10 +57,7 @@ export default class App extends Component{
             <Col xs="3">
               <CategoryList currentCategory = {this.state.currentCategory} changeCategory={this.changeCategory} info={categoryInfo} />
             </Col>
-
             <Col xs="9">
-              <switch></switch>
-
               <ProductList
               products={this.state.products}
               addToCart = {this.addToCart}
