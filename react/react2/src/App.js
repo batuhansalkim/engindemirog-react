@@ -3,6 +3,7 @@ import CategoryList from "./CategoryList";
 import Navi from "./Navi";
 import ProductList from "./ProductList";
 import { Container,Row,Col} from "react-bootstrap";
+import alertify from "alertifyjs"; 
 
 export default class App extends Component{
   
@@ -35,8 +36,13 @@ export default class App extends Component{
 
     }
     this.setState({cart:newCart});
+    alertify.success(product.productName + "added to cart!",1);
   }
 
+  removeFromCart=(product)=>{
+    let newCart =this.state.cart.filter(c=>c.product.id!==product.id);
+    this.setState({cart:newCart});
+  }
 
   render(){
     let productInfo = { title: "Ürünler" }
@@ -45,7 +51,7 @@ export default class App extends Component{
       <div>
         <Container>
           
-            <Navi cart={this.state.cart} />
+            <Navi removeFromCart = {this.removeFromCart} cart={this.state.cart} />
           
           <Row>
             <Col xs="3">
